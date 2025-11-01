@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Wizard form -->
+    <record id="view_picking_import_wizard_form" model="ir.ui.view">
+        <field name="name">stock.picking.import.wizard.form</field>
+        <field name="model">stock.picking.import.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Import Serials into Picking">
+                <sheet>
+                    <group>
+                        <field name="picking_id" readonly="1"/>
+                        <field name="filename" placeholder="File name (e.g. import.csv)" invisible="1"/>
+                        <field name="file_type" invisible="1"/>
+                        <field name="upload_file" filename="filename" widget="binary"/>
+                    </group>
+                </sheet>
+                <footer>
+                    <button string="Download Template" type="object" name="action_download_template" class="btn-secondary"/>
+                    <button string="Import" type="object" name="action_import" class="btn-primary"/>
+                    <button string="Cancel" class="btn-default" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action to open wizard -->
+    <record id="action_picking_import_wizard" model="ir.actions.act_window">
+        <field name="name">Import Picking Serials</field>
+        <field name="res_model">stock.picking.import.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="view_id" ref="view_picking_import_wizard_form"/>
+    </record>
+
+    <!-- Add button on picking form header to open wizard (prefill picking via context) -->
+    <record id="view_picking_form_inherit_import_serials" model="ir.ui.view">
+        <field name="name">stock.picking.form.inherit.import.serials</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+             <xpath expr="//header/button[@name='action_cancel']" position="after">
+                <!-- context ensures default_picking_id is set to current picking -->
+                <button name="%(action_picking_import_wizard)d" type="action"
+                        string="Import Serials" class="oe_highlight"
+                        context="{'default_picking_id': id}"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
+
