@@ -14,6 +14,7 @@
         'security/ir.model.access.csv',
         'wizard/picking_import_import_wizard_views.xml',
     ],
+    'images': ['static/description/banner.png'],
     'license': 'LGPL-3',
     'application': False,
     'installable': True,
