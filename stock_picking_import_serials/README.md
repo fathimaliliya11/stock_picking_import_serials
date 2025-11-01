@@ -6,7 +6,7 @@ It simplifies data entry for serialized inventory operations like receipts, inte
 
 ---
 
-### ✨ Features
+### Features
 - Import serial/lot numbers from Excel.
 - Works directly from the stock picking form view.
 - Automatically links imported serials to the corresponding picking lines.
@@ -15,7 +15,7 @@ It simplifies data entry for serialized inventory operations like receipts, inte
 
 ---
 
-### 🧭 How It Works
+### How It Works
 1. Open any **Stock Picking** record (Receipt/Delivery/Internal Transfer).  
 2. Click the **“Import Serials”** button.  
 3. Select your Excel file.  
@@ -23,7 +23,7 @@ It simplifies data entry for serialized inventory operations like receipts, inte
 
 ---
 
-### 📂 File Format
+### File Format
 Your Excel or CSV file should include:
 | Product | Lot/Serial Number | Quantity |
 |----------|------------------|-----------|
@@ -32,18 +32,18 @@ Your Excel or CSV file should include:
 
 ---
 
-### ⚙️ Dependencies
+### Dependencies
 - **Odoo 18.0**
 - **Stock** module
 
 ---
 
 
-### 📜 License
+### License
 This module is licensed under the **LGPL-3** License.
 
 ---
 
-### 📦 Version
+### Version
 **18.0.1.0.0**
 
